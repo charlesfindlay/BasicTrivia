@@ -1,0 +1,80 @@
+﻿@model BasicTrivia.Models.Question
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Trivia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trivia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice5)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
