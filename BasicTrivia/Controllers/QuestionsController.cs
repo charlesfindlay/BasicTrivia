@@ -14,8 +14,15 @@ namespace BasicTrivia.Controllers
     {
         private QuestionDBContext db = new QuestionDBContext();
 
-        // GET: Questions
+        // Trivia Home Page
         public ActionResult Index()
+        {
+            return View();
+        }
+        
+        
+        // GET: Questions
+        public ActionResult ListQuestions()
         {
             return View(db.Questions.ToList());
         }
