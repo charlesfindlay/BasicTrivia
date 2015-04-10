@@ -130,5 +130,25 @@ namespace BasicTrivia.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        // Start Controller Methods to execute game logic
+
+        public ActionResult NewGame()
+        {
+            var totalQuestions = db.Questions.Count();
+            int[] notAsked = Enumerable.Range(1, totalQuestions).ToArray();
+            int right = 0;
+            int wrong = 0;
+
+            return ShowNextQuestion();
+          
+        }
+
+
+
+
+
+
     }
 }
