@@ -234,6 +234,7 @@
     <Content Include="Views\Questions\Edit.cshtml" />
     <Content Include="Views\Questions\ListQuestions.cshtml" />
     <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Questions\ShowNextQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

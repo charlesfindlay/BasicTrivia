@@ -156,17 +156,96 @@ namespace BasicTrivia.Controllers
             // Randomize Question asked and remove from notAsked array
             Random rnd = new Random();
             int nextQuestion = rnd.Next(0, notAsked.Count());
-            notAsked.RemoveAt(nextQuestion);
-
-            //Get Question from db
             
 
+            //Get Question from db
+            int index = notAsked[nextQuestion];
+            Question question = db.Questions.SingleOrDefault(q => q.ID == index);
+            var questionText = question.Trivia;
 
+            //Arrange choices randomly
+            var rndArray = Enumerable.Range(1, 4).OrderBy(t => rnd.Next()).ToArray();
+            var rndAnswer = rnd.Next(1,4);
+            foreach (var n in rndArray)
+            {
+                switch (n)
+                {
+                    case 1:
+                        if (n == rndAnswer)
+                        {
+                            var option1 = question.Answer;
+                        }
+                        else
+                        {
+                            var option1 = GetChoice(n, question);
+                        }
+                        break;
+                    case 2:
+                        if (n == rndAnswer)
+                        {
+                            var option2 = question.Answer;
+                        }
+                        else
+                        {
+                            var option2 = GetChoice(n, question);
+                        }
+                        break;
+                    case 3:
+                        if (n == rndAnswer)
+                        {
+                            var option3 = question.Answer;
+                        }
+                        else
+                        {
+                            var option3 = GetChoice(n, question);
+                        }
+                        break;
+                    case 4:
+                        if (n == rndAnswer)
+                        {
+                            var option4 = question.Answer;
+                        }
+                        else
+                        {
+                            var option4 = GetChoice(n, question);
+                        }
+                        break;
                 
+                }  //end switch
+            }  //end foreach 
 
-
+            notAsked.RemoveAt(nextQuestion);
             return View();
+        } // End ShowNextQuestion
+
+        
+        
+        private object GetChoice(int n, Question question)
+        {
+            var choice = "";
+            switch (n)
+            {
+                case 1:
+                    choice = question.Choice1;
+                    break;
+                case 2:
+                    choice = question.Choice2;
+                    break;
+                case 3:
+                    choice = question.Choice3;
+                    break;
+                case 4:
+                    choice = question.Choice4;
+                    break;
+                case 5:
+                    choice = question.Choice5;
+                    break;
+            }
+            return choice;
         }
+
+
+
 
 
         public ActionResult EndGame(int right, int wrong)
