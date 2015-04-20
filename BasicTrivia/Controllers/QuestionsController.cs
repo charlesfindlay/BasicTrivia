@@ -137,16 +137,42 @@ namespace BasicTrivia.Controllers
         public ActionResult NewGame()
         {
             var totalQuestions = db.Questions.Count();
-            int[] notAsked = Enumerable.Range(1, totalQuestions).ToArray();
+            List<int> notAsked = Enumerable.Range(1, totalQuestions).ToList();
             int right = 0;
             int wrong = 0;
 
-            return ShowNextQuestion();
+            return ShowNextQuestion(notAsked, right, wrong);
           
         }
 
+        public ActionResult ShowNextQuestion(List<int> notAsked, int right, int wrong)
+        {
+            //check if no questions remaining
+            if (notAsked == null)
+            {
+                return EndGame(right, wrong);
+            }
+            
+            // Randomize Question asked and remove from notAsked array
+            Random rnd = new Random();
+            int nextQuestion = rnd.Next(0, notAsked.Count());
+            notAsked.RemoveAt(nextQuestion);
+
+            //Get Question from db
+            
 
 
+                
+
+
+            return View();
+        }
+
+
+        public ActionResult EndGame(int right, int wrong)
+        {
+            return View();
+        }
 
 
 
